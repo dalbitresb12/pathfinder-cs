@@ -6,6 +6,8 @@ Modified from the code by [Sebastian Lague](https://github.com/SebLague), availa
 
 All the credits for the implementation go to him.
 
+![Demo](.github/demo.gif)
+
 ## License
 
 This project is available under the GNU General Public License v3.0. See more on [LICENSE](LICENSE).

@@ -1,4 +1,4 @@
-# Pathfinder on Windows Forms - A* Algorithm
+# Pathfinder - A* Algorithm
 
 Basic implementation of the A* algorithm in Windows Forms and GDI+. 
 

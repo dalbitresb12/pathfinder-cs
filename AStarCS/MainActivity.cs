@@ -19,6 +19,17 @@ namespace AStarCS {
       InitializeComponent();
 
       GraphicsPath unwalkable = new GraphicsPath();
+
+      unwalkable.AddRectangle(new Rectangle(new Point(9, 0), new Size(50, 30)));
+      unwalkable.AddRectangle(new Rectangle(new Point(20, 0), new Size(25, 22)));
+      unwalkable.AddRectangle(new Rectangle(new Point(54, 90), new Size(45, 332)));
+      unwalkable.AddRectangle(new Rectangle(new Point(350, 123), new Size(72, 10)));
+      unwalkable.AddRectangle(new Rectangle(new Point(400, 600), new Size(50, 89)));
+      unwalkable.AddRectangle(new Rectangle(new Point(213, 423), new Size(100, 31)));
+      unwalkable.AddRectangle(new Rectangle(new Point(452, 56), new Size(43, 8)));
+      unwalkable.AddRectangle(new Rectangle(new Point(742, 232), new Size(54, 67)));
+      unwalkable.AddRectangle(new Rectangle(new Point(121, 564), new Size(21, 41)));
+
       Point gridWorldSize = new Point(Width, Height);
       PointF nodeRadius = new PointF(18, 10);
       grid = new Grid(unwalkable, gridWorldSize, nodeRadius);
@@ -65,7 +76,7 @@ namespace AStarCS {
     }
 
     private void movementTimer_Tick(object sender, EventArgs e) {
-      keysPressed.ForEach(key => player.Move(key));
+      keysPressed.ForEach(key => player.Move(key, grid));
       Pathfinder.FindPath(grid, seeker1.position, player.position, seeker1);
       Pathfinder.FindPath(grid, seeker2.position, player.position, seeker2);
       Pathfinder.FindPath(grid, seeker3.position, player.position, seeker3);

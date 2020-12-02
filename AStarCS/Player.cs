@@ -20,20 +20,31 @@ namespace AStarCS {
       world.FillRectangle(brush, rect);
     }
 
-    public void Move(Keys key) {
+    public void Move(Keys key, Grid grid) {
+      Point mainCorner = new Point(position.X, position.Y);
+
       switch (key) {
         case Keys.W:
-          position.Y -= velocity;
+          mainCorner.Y -= velocity;
           break;
         case Keys.S:
-          position.Y += velocity;
+          mainCorner.Y += velocity;
           break;
         case Keys.A:
-          position.X -= velocity;
+          mainCorner.X -= velocity;
           break;
         case Keys.D:
-          position.X += velocity;
+          mainCorner.X += velocity;
           break;
+      }
+
+      Point inverseCorner = new Point(mainCorner.X + size.Width, mainCorner.Y + size.Height);
+      Point corner1 = new Point(mainCorner.X + size.Width, mainCorner.Y);
+      Point corner2 = new Point(mainCorner.X, mainCorner.Y + size.Height);
+
+      if (!grid.unwalkableMask.IsVisible(mainCorner) && !grid.unwalkableMask.IsVisible(inverseCorner)
+        && !grid.unwalkableMask.IsVisible(corner1) && !grid.unwalkableMask.IsVisible(corner2)) {
+        position = mainCorner;
       }
     }
   }

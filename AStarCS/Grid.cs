@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Diagnostics;
 
 namespace AStarCS {
   class Grid {
-    GraphicsPath unwalkableMask;
+    public GraphicsPath unwalkableMask;
     Point gridWorldSize;
     Node[,] grid;
 
@@ -74,10 +73,12 @@ namespace AStarCS {
       int nodeRadiusX = RoundToInt(nodeRadius.X);
       int nodeRadiusY = RoundToInt(nodeRadius.Y);
 
+      world.FillPath(Brushes.Black, unwalkableMask);
       foreach (Node node in grid) {
         Point location = new Point(node.worldPos.X - nodeRadiusX, node.worldPos.Y - nodeRadiusY);
         Size size = new Size(Point.Round(nodeDiameter));
         Rectangle rect = new Rectangle(location, size);
+
         world.DrawRectangle(pen, rect);
       }
     }
